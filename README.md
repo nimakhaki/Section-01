@@ -3,7 +3,7 @@
 ## Summary
 ###### Looking for a job is one of the most confusing and challenging processes anyone has to face. Many factors need to be considered to find the right job. You do not know which job is the right job for your major, you do not have any employment experience, you do not know where to looking for the right job and etc. Yes, you are overwhelmed with those worries in mind.  Especially, this issue has become more nerve-wracking due to the current pandemic. Therefore, I decided to define a project to address these concerns and to determine the most influential factors in job searching.  In the beginning, I  determined the most required skills for data-related jobs (including data scientist, data analyst and data engineer) jobs posted in the Philadelphia area on the Indeed website.  I scraped data from indeed using the python language and Selenium library.  After data cleaning, to extract keywords/skills from job descriptions, I performed NLP, using python and NLTK library. I used Tableau for an initial exploratory analysis.  Throughout the project, I intend to expand the analysis and the prediction to develop an application that could be applied throughout the United States. I aim to determine and forecast which skills are most important and in-demand in which states.   I will determine the trends and patterns between salaries, skills, geographical locations, and areas of industry e.g. healthcare, government, business, media and etc. I believe the outcome application would be very beneficial for everyone who is seeking for the job and can provide important and hidden information. 
 # Code
-## First we need data
+## Data collecting
 ###### Selenium used to scrape the Indeed website.
 ```python
 from selenium import webdriver
@@ -216,9 +216,9 @@ for i in range(90):
 9, ml
 9, ai
 9, aws
-## Data is ready!
 ###### Now we will combine the first table with 7 variables and second one with skills through the field ID
-###### Now to do some explotory analysis, tableau has been used.
+## Exploratory Analysis
+###### Now to do some exploratory analysis, tableau has been used.
 ###### First plot: Top Skills needed in data related field (Data Science/Analytics/Engineer)
 ![table02](https://user-images.githubusercontent.com/69024956/89053346-10f58d00-d325-11ea-8d52-d271cdfd3d39.PNG)
 ###### Second Plot: Top Skills in Data Science
@@ -227,24 +227,3 @@ for i in range(90):
 ![table04](https://user-images.githubusercontent.com/69024956/89053525-5619bf00-d325-11ea-9586-f8d9fd49bb0d.PNG)
 ###### Forth Plot: Top Skills in Data Analytics
 ![table05](https://user-images.githubusercontent.com/69024956/89053567-6af65280-d325-11ea-8a23-a22fee09dfb4.PNG)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
