@@ -226,6 +226,7 @@ for i in range(90):
 ###### Third Plot: Top Skills in Data Engineer
 ![table04](https://user-images.githubusercontent.com/69024956/89053525-5619bf00-d325-11ea-9586-f8d9fd49bb0d.PNG)
 ###### Forth Plot: Top Skills in Data Analytics
+![table05](https://user-images.githubusercontent.com/69024956/89053567-6af65280-d325-11ea-8a23-a22fee09dfb4.PNG)
 
 
 
