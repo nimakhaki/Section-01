@@ -224,9 +224,7 @@ for i in range(90):
 ###### Second Plot: Top Skills in Data Science
 ![table03](https://user-images.githubusercontent.com/69024956/89053464-397d8700-d325-11ea-863e-6c1ecfe60676.PNG)
 ###### Third Plot: Top Skills in Data Engineer
-
-
-
+![table04](https://user-images.githubusercontent.com/69024956/89053525-5619bf00-d325-11ea-9586-f8d9fd49bb0d.PNG)
 ###### Forth Plot: Top Skills in Data Analytics
 
 
