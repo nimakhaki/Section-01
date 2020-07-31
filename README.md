@@ -110,7 +110,143 @@ df['Salary']=salaries
 df['Description']=descriptions
 ```
 ## Let's Look at the data
+![table01](https://user-images.githubusercontent.com/69024956/89049988-17353a80-d320-11ea-9126-63b4892944b7.PNG)
+
+### Now lets see to one of job description
+###### "Description\nThe Senior SQL Developer on the Data & Process Modernization team is responsible for delivering one or more of the following services:\nData Strategy & Architecture Partnerships - Collaborate with teams in the Technology Services Organization and Enterprise Data Organization on development and implementation of data asset roadmap, data assets, and sourcing new data for the purposes of Incentives & Sales Performance Management\nTactical remediation of existing/aging data assets – Data feeds and prep (ETL), process review\nStrategic Project Advisory – Engage in strategic initiatives to ensure that the information needs for the purposes of Incentives & Sales Performance are discovered and realized.\nQualifications\nRequired Skills / Experience\nAdvanced knowledge of SQL programming language\nAdvanced knowledge in ETL processes, create and/or modify data marts\nStrong understanding of big data and data lakes (e.g., Data Modeling)\nCompetent use of Microsoft Office applications to include Microsoft Project, Excel, Visio, PowerPoint, Word\nSelf-thinker able to work through issues and escalate only when appropriate\nStrong oral communication skills\nAbility to act as internal consultant, building relationships with partners, active engagement\nAbility to manage the deliverable lifecycle: elicit requirements, update/create documentation, provide estimates, drive to completion\nAbility to derive insights from complex data sets including basic statistical techniques, control plans, correlations\nService Level Management - ability to manage competing priorities while meeting negotiated SLAs\n5+ years working in providing technical delivery in support of Data needs\nPreferred Skills / Experience\nAgile Kanban\nKnowledge of migrating data from Excel VBA and Access data stores to SQL\nServer Administrator experience, such partitioning, back-ups\n5+ years experience in customer facing front-line role and/or roles supporting front-line\nAtleryx experience or certification desired\nFinancial Services background desired\nHours and Work Schedule\nHours per week: 40\nWork Schedule: 8:00am - 5:00pm, Monday - Friday\nWhy Work for Us\nAt Citizens, you'll find a customer-centric culture built around helping our customers and giving back to our local communities. When you join our team, you are part of a supportive and collaborative workforce, with access to training and tools to accelerate your potential and maximize your career growth.\nEqual Employment Opportunity\nIt is the policy of Citizens Bank to provide equal employment and advancement opportunities to all colleagues and applicants for employment without regard to race, color, ethnicity, religion, gender, pregnancy/childbirth, age, national origin, sexual orientation, gender identity or expression, disability or perceived disability, genetic information, citizenship, veteran or military status, marital or domestic partner status, or any other category protected by federal, state and/or local laws.\nEqual Employment and Opportunity Employer/Disabled/Veteran\nCitizens Bank is a brand name of Citizens Bank, N.A. and each of its respective subsidiaries."
+
+###### To extract the Skills and techniques we neet to do NLP on the job descriptions
+## NLP
+###### NLTK library is used for this project
 ```python
-df
+import numpy as np
+import pandas as pd
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
 ```
-![image info](./pictures/table01.png)
+###### Define the text processing
+```python
+jd = df_da.drop(['Link', 'Salary','Review','Location','Company','Title'], axis=1)
+def text_preprocessing(x):
+    words = re.sub('[^a-zA-Z]', ' ', x).lower().split()
+    lemma = nltk.wordnet.WordNetLemmatizer()
+    words = [lemma.lemmatize(word) for word in words]
+    words = ' '.join(words)
+    return words
+jd = jd.applymap(text_preprocessing)
+```
+###### Create the matrix X for keywords
+```python
+X = pd.DataFrame()
+for column in jobs_X:
+    vect = TfidfVectorizer(stop_words='english', min_df=0.005, ngram_range=(1,2))
+    X_sub = vect.fit_transform(jd[column])
+    new_sub = pd.DataFrame(X_sub.toarray(), columns=vect.get_feature_names())
+    X = pd.concat([X, new_sub], axis=1, sort=False)
+```
+###### Create a bag of Data Science skills
+```python
+skills = ['Scala', 'visualisation', 'Perl', 'Java', 'Matlab', 'JavaScript', 'math', 'mathematics',
+          'Python', 'SPSS', 'saas', 'Tableau', 'Excel', 'Azure', 'cloud', 'API', 'qlik','qlikview',
+          'Hadoop', 'Pig', 'Spark', 'statistic', 'MapReduce', 'Hive', 'modeling', 
+          'Machine Learning', 'ML', 'AI', 'Flume', 'HBase', 'Cassandra', 'NoSQL', 'SQL', 'MongoDB',           'Power BI', 'PowerBi', 'NLP', 'AWS']
+skills = [s.lower() for s in skills]
+```
+###### Check the match for each row and let see some example
+```python
+for i in range(90):
+    for j in skills_lower:
+        if X[j][i] != 0:
+            print(str(i) + ", " + str(j))
+```
+######
+0, excel
+0, modeling
+0, sql
+1, python
+1, saas
+1, cloud
+1, nosql
+1, sql
+1, aws
+2, python
+2, cloud
+2, sql
+3, scala
+3, java
+3, python
+3, spss
+3, tableau
+3, cloud
+3, qlikview
+3, hadoop
+3, spark
+3, hive
+3, modeling
+3, flume
+3, hbase
+3, nosql
+3, sql
+3, power bi
+3, aws
+4, python
+4, cloud
+4, sql
+4, aws
+5, scala
+5, mathematics
+5, python
+5, spark
+5, statistic
+5, hive
+5, sql
+6, python
+6, machine learning
+6, ml
+6, nlp
+6, aws
+7, python
+7, modeling
+9, python
+9, api
+9, modeling
+9, machine learning
+9, ml
+9, ai
+9, aws
+## Data is ready!
+###### Now we will combine the first table with 7 variables and second one with skills through the field ID
+###### Now to do some explotory analysis, tableau has been used.
+###### First plot: Top Skills needed in data related field (Data Science/Analytics/Engineer)
+
+###### Second Plot: Top Skills in Data Science
+
+
+###### Third Plot: Top Skills in Data Engineer
+
+
+
+###### Forth Plot: Top Skills in Data Analytics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
