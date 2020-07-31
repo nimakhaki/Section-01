@@ -222,8 +222,7 @@ for i in range(90):
 ###### First plot: Top Skills needed in data related field (Data Science/Analytics/Engineer)
 ![table02](https://user-images.githubusercontent.com/69024956/89053346-10f58d00-d325-11ea-8d52-d271cdfd3d39.PNG)
 ###### Second Plot: Top Skills in Data Science
-
-
+![table03](https://user-images.githubusercontent.com/69024956/89053464-397d8700-d325-11ea-863e-6c1ecfe60676.PNG)
 ###### Third Plot: Top Skills in Data Engineer
 
 
