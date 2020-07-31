@@ -220,7 +220,7 @@ for i in range(90):
 ###### Now we will combine the first table with 7 variables and second one with skills through the field ID
 ###### Now to do some explotory analysis, tableau has been used.
 ###### First plot: Top Skills needed in data related field (Data Science/Analytics/Engineer)
-
+![table02](https://user-images.githubusercontent.com/69024956/89053346-10f58d00-d325-11ea-8d52-d271cdfd3d39.PNG)
 ###### Second Plot: Top Skills in Data Science
 
 
